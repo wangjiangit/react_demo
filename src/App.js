@@ -20,6 +20,23 @@ function ItemList(){
     });
     return <ul>{numsList}</ul>;
 }
+
+
+function UserList(){
+    let userArr=[
+        {"id":1,"name":"张三","age":21,"sex":"男"},
+        {"id":2,"name":"李四","age":22,"sex":"男"},
+        {"id":3,"name":"王五","age":21,"sex":"女"},
+    ];
+
+    return (
+        <ul>
+            {userArr.map((userObj)=>{
+              return  <li key={userObj.id}>{userObj.name}</li>
+            })}
+        </ul>
+    );
+}
 class App extends Component {
     static app_url = 'http://www.baidu.com';
 
@@ -49,6 +66,7 @@ class App extends Component {
 
                 <WarningBanner warn={true} />
                 <ItemList />
+                <UserList />
             </div>
         );
     }
