@@ -11,7 +11,14 @@ function WarningBanner(props){
     return (
         <span id="warnBanner">警告</span>
     );
+}
 
+function ItemList(){
+    let nums=[1,2,3,4];
+    let numsList= nums.map((num)=>{
+        return <li key={num.toString()}>{num}</li>  //为每个元素分配key属性，是让React更好的确定那个元素发生变化
+    });
+    return <ul>{numsList}</ul>;
 }
 class App extends Component {
     static app_url = 'http://www.baidu.com';
@@ -41,6 +48,7 @@ class App extends Component {
                 {isLogin ?'Login':'UnLogin'}
 
                 <WarningBanner warn={true} />
+                <ItemList />
             </div>
         );
     }
