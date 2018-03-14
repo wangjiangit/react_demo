@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import TimeComponent from './TimeComponent';  //引入组件TimeComponent
+import NameForm from './NameForm';
+import Calculator from './Calculator';
 
 function WarningBanner(props){
 
@@ -67,6 +69,8 @@ class App extends Component {
                 <WarningBanner warn={true} />
                 <ItemList />
                 <UserList />
+                <NameForm/>
+                <Calculator/>
             </div>
         );
     }
