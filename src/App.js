@@ -4,6 +4,7 @@ import './App.css';
 import TimeComponent from './TimeComponent';  //引入组件TimeComponent
 import NameForm from './NameForm';
 import Calculator from './Calculator';
+import Product from './Product';
 
 function WarningBanner(props) {
 
@@ -122,6 +123,7 @@ class App extends Component {
                 <Calculator/>
                 <WelcomeDialog/>
                 <SplitPane left={<Contact/>} right={<Info/>}/>
+                <Product/>
             </div>
         );
     }
