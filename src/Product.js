@@ -104,9 +104,10 @@ class FilterableProductTable extends React.Component {
         super(props);
         this.state = {
             filterText: '',
-            inStockOnly: false
+            inStockOnly: false,
+            filterRows: this.props.products
         };
-
+        this.filterRows = [];
         this.handleFilterTextInput = this.handleFilterTextInput.bind(this);
         this.handleInStockInput = this.handleInStockInput.bind(this);
     }
@@ -115,7 +116,27 @@ class FilterableProductTable extends React.Component {
         this.setState({
             filterText: filterText
         });
+
+        /**
+         * 过滤逻辑
+         * @type {Array}
+         */
+        var filterRows = [];
+        var $this = this;
+        this.props.products.forEach(function (e) {
+            if (e.name == filterText) {
+                filterRows.push(e);
+            }
+            if (filterText == '') {
+                filterRows = PRODUCTS;
+            }
+            $this.setState({
+                filterRows: filterRows
+            });
+        });
+
     }
+
 
     handleInStockInput(inStockOnly) {
         this.setState({
@@ -133,7 +154,7 @@ class FilterableProductTable extends React.Component {
                     onInStockInput={this.handleInStockInput}
                 />
                 <ProductTable
-                    products={this.props.products}
+                    products={this.state.filterRows}
                     filterText={this.state.filterText}
                     inStockOnly={this.state.inStockOnly}
                 />
@@ -141,7 +162,6 @@ class FilterableProductTable extends React.Component {
         );
     }
 }
-
 
 class Product extends Component {
 
